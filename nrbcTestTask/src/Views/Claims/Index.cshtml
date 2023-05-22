@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Claim>
+
+@*Section NavBar*@
+@await Html.PartialAsync("_NavBar", "Home")
+
+@*Section Hero*@
+@await Html.PartialAsync("_Hero")
+
+@*Main section*@
+<div class="container">
+	<div class="tile">
+		<h4>
+			Claims
+		</h4>
+
+		<table>
+			<tr>
+				<th>Subject</th>
+				<th>Issuer</th>
+				<th>Type</th>
+				<th>Value</th>
+			</tr>
+			@if (Model == null || Model.Count() == 0) {
+				<tr><td>No Claims</td></tr>
+			}
+			else {
+				@foreach (var claim in Model.OrderBy(c => c.Type)) {
+					<tr>
+						<td>@claim.Subject?.Name</td>
+						<td>@claim.Issuer</td>
+						@*<td>@claim.Type</td>*@
+						<td identity-claim-type="@claim.Type"></td>
+						<td>@claim.Value</td>
+					</tr>
+				}
+			}
+		</table>
+	</div>
+
+</div>
+
+
+@*Section Footer*@
+@await Html.PartialAsync("_Footer")

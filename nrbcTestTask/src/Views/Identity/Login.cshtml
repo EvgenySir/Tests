@@ -1,0 +1,42 @@
+﻿@model LoginUserModel
+
+@*Section NavBar*@
+@await Html.PartialAsync("_NavBar", "Home")
+
+@*Section Hero*@
+@await Html.PartialAsync("_Hero")
+
+@*Main section*@
+<div class="container">
+	<div class="tile-row">
+		<div class="tile">
+			<h3>Аутентификация</h3>
+			<form asp-action="Login" method="post" class="login-form">
+
+				@*UserName*@
+				<div>
+					<label asp-for="UserName"></label>
+					<input type="text" asp-for="UserName" title="Введите имя пользователя"
+					placeholder="Имя пользователя" />
+					<span asp-validation-for="UserName" class="text-danger"></span>
+				</div>
+
+				@*Password*@
+				<div>
+					<label asp-for="Password"></label>
+					<input type="password" asp-for="Password" title="Введите пароль" />
+					<span asp-validation-for="Password" class="text-danger"></span>
+				</div>
+
+				@*<a asp-controller="Home" asp-action="Index">Отмена</a>*@
+				<button type="submit">Ок</button>
+			</form>
+
+			<a asp-controller="Identity" asp-action="Create" method="get">Регистрация нового пользователя</a>
+		</div>
+	</div>
+</div>
+
+
+@*Section Footer*@
+@await Html.PartialAsync("_Footer")

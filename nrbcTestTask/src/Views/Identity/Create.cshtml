@@ -1,0 +1,58 @@
+﻿@model CreateUserModel
+
+@*Section NavBar*@
+@await Html.PartialAsync("_NavBar", "Home")
+
+@*Section Hero*@
+@await Html.PartialAsync("_Hero")
+
+
+@*Main section*@
+<div class="container">
+	<div class="tile-row">
+		<div class="tile">
+			<h3>Регистрация нового пользователя</h3>
+			<form asp-action="Create" method="post" class="login-form">
+
+				@*UserName*@
+				<div>
+					<label asp-for="UserName"></label>
+					<input type="text" asp-for="UserName"
+				 title="Введите имя пользователя длиной от 4 до 128 символов"
+				 placeholder="Имя пользователя" />
+					<span asp-validation-for="UserName" class="text-danger"></span>
+				</div>
+
+				@*Checkbox*@
+				<div>
+					<label asp-for="Enabled" class="control-label font-weight-bold"></label>
+					<input type="checkbox" asp-for="Enabled"
+				 title="Отметьте если ваш возраст 18+" />
+				</div>
+
+				@*Password*@
+				<div class="form-group">
+					<label asp-for="Password"></label>
+					<input type="password" asp-for="Password"
+				 title="Должен содержать 6 или более символов" />
+					<span asp-validation-for="Password" class="text-danger"></span>
+				</div>
+
+				@*Confirm Password*@
+				<div class="form-group">
+					<label asp-for="ConfirmPassword"></label>
+					<input type="password" asp-for="ConfirmPassword"
+				 title="Повторите пароль" />
+					<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+				</div>
+
+				<a asp-controller="Identity" asp-action="Login">Отмена</a>
+				<button type="submit">Создать</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+@*Section Footer*@
+@await Html.PartialAsync("_Footer")

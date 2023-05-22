@@ -1,0 +1,21 @@
+﻿@*Section NavBar*@
+@await Html.PartialAsync("_NavBar", "Home")
+
+@*Section Hero*@
+@await Html.PartialAsync("_Hero")
+
+@*Main section*@
+<div class="container">
+	<div class="tile-row">
+		<div class="tile">
+			<h4>Страница с ограниченным доступом</h4>
+				<p>
+					Данная страница доступна только для пользователей 
+					отметивших при регистрации достижение 18 летнего возраста
+				</p>
+		</div>
+	</div>
+</div>
+
+@*Section Footer*@
+@await Html.PartialAsync("_Footer")

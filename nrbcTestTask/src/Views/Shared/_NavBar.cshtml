@@ -1,0 +1,28 @@
+﻿<nav class="nav-container">
+	<div class="nav-container__inner">
+		<a class="home-link" asp-controller="Home" asp-action="Index">Home</a>
+		<ul class="top-nav">
+
+			@if (User?.Identity?.IsAuthenticated ?? false) {
+
+				<li><a asp-controller="Claims" asp-action="Index" method="get">Claims</a></li>
+				
+				@*link for limited resource*@
+				@if (User != null) {
+					@if (User.HasClaim("AgeLimit", "18+") || User.HasClaim("AgeLimit", "Аllowed")) {
+						<li><a asp-controller="Home" asp-action="LimitedAccess" method="get">LimitedAccess</a></li>
+					}
+				}
+
+				<li class="top-nav__featured">
+					<a asp-controller="Identity" asp-action="Logout" method="get">Logout @User?.Identity?.Name</a>
+				</li>
+			}
+			else {
+				<li class="top-nav__featured">
+					<a asp-controller="Identity" asp-action="Login" method="get">Login</a>
+				</li>
+			}
+		</ul>
+	</div>
+</nav>
