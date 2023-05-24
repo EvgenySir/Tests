@@ -33,6 +33,7 @@ builder.Services.AddAuthorization(options => {
 
 UserSecretsConfigurationExtensions.AddUserSecrets(builder.Configuration,
 	"b93e0fcd-960f-49dc-b0df-d189a0e3d9fb");
+
 //	add services to the container
 //	2 var: UseSqlServer(Configuration.GetConnectionString("DefaultConnection")))
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
