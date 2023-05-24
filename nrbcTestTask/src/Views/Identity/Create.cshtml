@@ -12,6 +12,7 @@
 	<div class="tile-row">
 		<div class="tile">
 			<h3>Регистрация нового пользователя</h3>
+			<div asp-validation-summary="All" class="text-danger"></div>
 			<form asp-action="Create" method="post" class="login-form">
 
 				@*UserName*@
