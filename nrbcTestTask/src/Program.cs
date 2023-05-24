@@ -7,8 +7,11 @@ using nrbcTestTask.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using nrbcTestTask.Infrastructure;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 //  dependency implementation between the interface and the class that implements the interface
 //  service is created each time it is needed(Transient)
@@ -27,6 +30,9 @@ builder.Services.AddAuthorization(options => {
 	});
 });
 
+
+UserSecretsConfigurationExtensions.AddUserSecrets(builder.Configuration,
+	"b93e0fcd-960f-49dc-b0df-d189a0e3d9fb");
 //	add services to the container
 //	2 var: UseSqlServer(Configuration.GetConnectionString("DefaultConnection")))
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
